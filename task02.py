@@ -1,6 +1,7 @@
 from pathlib import Path
 
-def get_cats_info(path):
+
+def get_cats_info(path: Path) -> list[dict[str, str]]:
     cats = []  
     try:
         with open(path, 'r', encoding='utf-8') as file: 
@@ -13,6 +14,7 @@ def get_cats_info(path):
     except Exception:
         print(f"Файл пошкоджено: {path}")
     return cats  
+
 
 cats_file = Path("cats_file.txt")
 cats_info = get_cats_info(cats_file)

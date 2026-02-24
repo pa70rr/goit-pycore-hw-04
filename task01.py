@@ -1,6 +1,7 @@
 from pathlib import Path
 
-def total_salary(path):
+
+def total_salary(path: Path) -> tuple[float, float]:
     total = 0
     count = 0
     try:
@@ -15,7 +16,8 @@ def total_salary(path):
         print(f"Файл не знайдено: {path}")
     except Exception:
         print(f"Файл пошкоджено: {path}")
-    
+
+
 salary_file = Path("salary_file.txt")
 total, average = total_salary(salary_file)
 print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")

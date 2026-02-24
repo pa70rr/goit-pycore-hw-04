@@ -1,39 +1,40 @@
-def parse_input(user_input):
+def parse_input(user_input: str) -> tuple[str, ...]:
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
 
 
-def add_contact(args, contacts):
+def add_contact(args: list[str], contacts: dict[str, str]) -> str:
     name, phone = args
     contacts[name] = phone
     return "Contact added."
 
 
-def change_contact(args, contacts):
+def change_contact(args: list[str], contacts: dict[str, str]) -> str:
     name, phone = args
     contacts[name] = phone
     return "Contact updated."
 
 
-def show_phone(args, contacts):
+def show_phone(args: list[str], contacts: dict[str, str]) -> str:
     name = args[0]
     if name in contacts:
         return f"{name}'s phone number is {contacts[name]}"
-    else:            
-         return "Contact not found."
+    else:
+        return "Contact not found."
 
 
-def show_all(contacts):
+def show_all(contacts: dict[str, str]) -> None:
     for name, phone in contacts.items():
-        print(f"{name}: {phone}")   
+        print(f"{name}: {phone}")
 
-def main():
-    contacts = {}
+
+def main() -> None:
+    contacts: dict[str, str] = {}
     print("Welcome to the assistant bot!")
-    
+
     while True:
-        user_input = input("Enter a command: ").strip().lower()
+        user_input: str = input("Enter a command: ").strip().lower()
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
@@ -51,6 +52,7 @@ def main():
             show_all(contacts)
         else:
             print("Invalid command.")
-    
+
+
 if __name__ == "__main__":
     main()

@@ -2,8 +2,10 @@ import sys
 from pathlib import Path
 from colorama import Fore, init
 
+
 # Включення кольорів для Windows
 init(autoreset=True)
+
 
 def directory(path: Path, indent: str = "") -> None:
     try:
@@ -15,6 +17,7 @@ def directory(path: Path, indent: str = "") -> None:
                 print(f"{indent}{Fore.GREEN}{item.name}")
     except PermissionError:
         print(f"{indent}{Fore.RED}Немає доступу")
+
 
 def main() -> None:
     if len(sys.argv) < 2:
@@ -33,6 +36,7 @@ def main() -> None:
 
     print(f"{Fore.YELLOW}{path}")
     directory(path)
+
 
 if __name__ == "__main__":
     main()
